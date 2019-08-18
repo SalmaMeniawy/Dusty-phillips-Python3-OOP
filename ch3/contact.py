@@ -31,3 +31,8 @@ class Friend(Contact):
         super(Friend,self).__init__(name,email)
         self.phone = phone
 
+class MailSender:
+    def send_mail(self, message):
+        print ("Sending Email to "+ self.email)
+        #add email logic here
+
