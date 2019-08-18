@@ -7,7 +7,7 @@ class ContactList(list):
             if contact.name == name:
                 matching_contacts.append(contact)
         return matching_contacts
-    
+
 class LongNameDict(dict):
     def longest_key(self):
         longest = None
@@ -26,3 +26,8 @@ class Supplier(Contact):
     def order(self,order):
         print("If This were a real system we will send"
         "'{}' order to '{}'".format(order,self.name))
+class Friend(Contact):
+    def __init__(self,name,email,phone):
+        super(Friend,self).__init__(name,email)
+        self.phone = phone
+
