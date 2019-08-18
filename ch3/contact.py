@@ -35,7 +35,7 @@ class Supplier(Contact):
         print("If This were a real system we will send"
         "'{}' order to '{}'".format(order,self.name))
 class Friend(Contact,AddressHolder):
-    def __init__(self,name,email,phone,street,city,state,code,**kwargs):
+    def __init__(self,phone='',**kwargs):
         super(Friend, self).__init__(**kwargs)
         """
          **kwargs parameter 
