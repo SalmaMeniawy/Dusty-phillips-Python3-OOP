@@ -22,4 +22,12 @@ class RightClass(BaseClass):
         print ("print calling merthod in right class")
         self.num_right_calls += 1
 
-        
+
+class SubClass(LeftClass , RightClass):
+    num_sub_calls = 0
+
+    def call_me(self):
+        LeftClass.call_me(self)
+        RightClass.call_me(self)
+        print ("print calling method in sub class")
+        self.num_sub_calls += 1
