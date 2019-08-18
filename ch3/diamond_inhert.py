@@ -13,3 +13,13 @@ class LeftClass(BaseClass):
         BaseClass.call_me(self)
         print ("Print calling method in left class")
         self.num_left_calls += 1
+
+class RightClass(BaseClass):
+    num_right_calls = 0
+
+    def call_me(self):
+        BaseClass.call_me(self)
+        print ("print calling merthod in right class")
+        self.num_right_calls += 1
+
+        
