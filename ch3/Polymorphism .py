@@ -7,4 +7,8 @@ class MP3File(AudioFile):
     ext = "mp3"
     def play(self):
         print ("playing {} as mp3 ".format(self.filename))
-    
+
+class WAVFile(AudioFile):
+    ext = "wav"
+    def play(self):
+        print ("playing {} as wav file".format(self.filename))
