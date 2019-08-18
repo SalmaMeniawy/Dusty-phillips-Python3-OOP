@@ -36,3 +36,5 @@ class MailSender:
         print ("Sending Email to "+ self.email)
         #add email logic here
 
+class EmailableContact(Contact,MailSender):
+    pass
