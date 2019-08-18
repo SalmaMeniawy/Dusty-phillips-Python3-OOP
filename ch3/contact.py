@@ -1,3 +1,9 @@
+class AddressHolder:
+    def __init__(self,street , city ,state , code):
+        self.street = street
+        self.city = city
+        self.state = state
+        self.code = code
 class ContactList(list):
     def search(self,name):
         '''Return all contacts that contain the search value
@@ -26,9 +32,11 @@ class Supplier(Contact):
     def order(self,order):
         print("If This were a real system we will send"
         "'{}' order to '{}'".format(order,self.name))
-class Friend(Contact):
-    def __init__(self,name,email,phone):
-        super(Friend,self).__init__(name,email)
+class Friend(Contact,AddressHolder):
+    def __init__(self,name,email,phone,street,city,state,code):
+        Contact.__init__(self,name,email)
+        AddressHolder.__init__(self,state,state,city,code)
+        # super(Friend,self).__init__(name,email)
         self.phone = phone
 
 class MailSender:
@@ -39,9 +47,3 @@ class MailSender:
 class EmailableContact(Contact,MailSender):
     pass
 
-class AddressHolder:
-    def __init__(self,street , city ,state , code):
-        self.street = street
-        self.city = city
-        self.state = state
-        self.code = code
