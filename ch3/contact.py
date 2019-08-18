@@ -7,6 +7,14 @@ class ContactList(list):
             if contact.name == name:
                 matching_contacts.append(contact)
         return matching_contacts
+    
+class LongNameDict(dict):
+    def longest_key(self):
+        longest = None
+        for key in self:
+            if not longest or len(key) > len(longest):
+                longest = key
+        return longest
 
 class Contact:
     all_contacts = ContactList()
