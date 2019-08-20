@@ -91,4 +91,11 @@ class House(Property):
         self.fenced = fenced
         self.num_stories = num_stories
 
+    def display(self):
+        super(House, self).display()
+        print("House Details")
+        print ("================")
+        print ("# of stories {} ").format(self.num_stories)
+        print ("garage : {}").format(self.garage)
+        print("fenced yard : {}".format(self.fenced))
         
