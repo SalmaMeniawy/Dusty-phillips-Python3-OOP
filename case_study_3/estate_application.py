@@ -81,3 +81,14 @@ class Apartment(Property):
         return parent_init
         prompt_init = staticmethod(prompt_init)
 
+class House(Property):
+    valied_garage = ("attached","detached","none")
+    valied_fenced = ("yes","no")
+
+    def __init__(self,num_stories='',garage='',fenced='',**kwargs):
+        super(House, self).__init__(**kwargs)
+        self.garage = garage
+        self.fenced = fenced
+        self.num_stories = num_stories
+
+        
