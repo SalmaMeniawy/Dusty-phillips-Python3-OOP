@@ -116,3 +116,10 @@ class House(Property):
         })
         return parent_init
     prompt_init = staticmethod(prompt_init)
+
+class Purchase:
+    def __init__(self,taxes='',price='',**kwargs):
+        super(Purchase, self).__init__(**kwargs)
+        self.price = price
+        self.taxes = taxes
+
