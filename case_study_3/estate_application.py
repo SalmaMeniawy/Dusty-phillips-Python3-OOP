@@ -149,5 +149,15 @@ class Rental:
         print("estimated utilities : {}".format(self.utilities))
         print ("furnished: {}".format(self.furnished))
 
+    def prompt_init():
+        return dict(
+            rent = input("What is the monthly rent ? "),
+            utilities = input("What are the estimated utilities? "),
+            furnished = get_valid_input(
+                "Is the property furnished ? ",
+                ("yes","no")
+            )
+        )
+    prompt_init = staticmethod(prompt_init)
 
 
