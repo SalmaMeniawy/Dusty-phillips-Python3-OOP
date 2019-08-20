@@ -1,4 +1,4 @@
-class property:
+class Property:
     def __init__(self, baths='', beds='', square_feet='', **kwargs):
         super(property, self).__init__(**kwargs)
         self.square_feet = square_feet
@@ -21,11 +21,5 @@ class property:
 
     prompt_init = staticmethod(prompt_init)
 
-    # def prompt_init():
-    #     return dict(
-    #         square_feet=input("Enter the square feet"),
-    #         beds=input("Enter Number of Bedrooms"),
-    #         baths=input("Enter Number of baths"),
-    #     )
-    #
-    # prompt_init = staticmethod(prompt_init)
+class Apartment(Property):
+    
