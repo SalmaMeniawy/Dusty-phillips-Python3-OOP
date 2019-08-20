@@ -135,4 +135,12 @@ class Purchase:
         )
     prompt_init = staticmethod(prompt_init)
 
+class Rental:
+    def __init__(self,rent='',furnished='',utilities='',**kwargs):
+        super(Rental, self).__init__(**kwargs)
+        self.utilities = utilities
+        self.rent = rent
+        self.furnished = furnished
+
+
 
