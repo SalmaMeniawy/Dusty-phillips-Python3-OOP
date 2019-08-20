@@ -35,3 +35,30 @@ class Apartment(Property):
         print("Apartment Details")
         print ("laundary : %s" % self.laundry)
         print ("has balcony : %s" % self.balcony)
+
+
+    def prompt_init():
+        parent_init = Property.prompt_init()
+        laundry = ''
+        while laundry.lower() not in \
+            Apartment.valied_laundries:
+            laundry = input("What laundry facilites does "
+                            "the proparty have ? ({})".format(
+                ", ".join(Apartment.valied_laundries)
+            ))
+            balcony = ''
+            while balcony.lower() not in \
+                Apartment.valied_balaconies:
+                balcony = input(
+                    "Does Property have a balcony ? "
+                    "({})".format(
+                        ", ".join(Apartment.valied_balaconies)
+
+                    )
+                )
+                parent_init.update({
+                    "laundry":laundry,
+                    "balcony":balcony
+                })
+                return parent_init
+            prompt_init = staticmethod(prompt_init)
