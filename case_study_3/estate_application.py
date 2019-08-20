@@ -29,4 +29,9 @@ class Apartment(Property):
         super(Apartment, self).__init__(**kwargs)
         self.balcony = balcony
         self.laundry = laundry
-        
+
+    def display(self):
+        super(Apartment, self).display()
+        print("Apartment Details")
+        print ("laundary : %s" % self.laundry)
+        print ("has balcony : %s" % self.balcony)
