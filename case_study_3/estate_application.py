@@ -141,6 +141,13 @@ class Rental:
         self.utilities = utilities
         self.rent = rent
         self.furnished = furnished
+        
+    def display(self):
+        super(Rental, self).display()
+        print ("Rental Details")
+        print ("rent : {}".format(self.rent))
+        print("estimated utilities : {}".format(self.utilities))
+        print ("furnished: {}".format(self.furnished))
 
 
 
