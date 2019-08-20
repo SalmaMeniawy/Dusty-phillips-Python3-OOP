@@ -128,3 +128,11 @@ class Purchase:
         print ("Purchase Price : {} ".format(self.price))
         print ("Purchase Taxes : {} ".format(self.taxes))
 
+    def prompt_init():
+        return dict(
+            price= input("what is the selling price ?"),
+            taxes = input("what are the estimated taxes ? ")
+        )
+    prompt_init = staticmethod(prompt_init)
+
+
