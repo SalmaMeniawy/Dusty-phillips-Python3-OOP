@@ -22,4 +22,11 @@ class Property:
     prompt_init = staticmethod(prompt_init)
 
 class Apartment(Property):
-    
+    valied_laundries = ("coin","ensuite","none")
+    valied_balaconies = ("yes","no","solarium")
+
+    def __init__(self,balcony='',laundry='',**kwargs):
+        super(Apartment, self).__init__(**kwargs)
+        self.balcony = balcony
+        self.laundry = laundry
+        
