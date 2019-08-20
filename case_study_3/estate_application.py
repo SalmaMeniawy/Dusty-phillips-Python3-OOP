@@ -1,5 +1,5 @@
 def get_valid_input(input_string, valied_options):
-    input_string += "({})".format(join(valied_options))
+    input_string += "({})".format(" ,".join(valied_options))
     responce = input(input_string)
     while responce.lower() not in valied_options:
         responce = input(input_string)
