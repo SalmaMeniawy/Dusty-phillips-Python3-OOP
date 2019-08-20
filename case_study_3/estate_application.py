@@ -123,3 +123,8 @@ class Purchase:
         self.price = price
         self.taxes = taxes
 
+    def display(self):
+        super(Purchase, self).display()
+        print ("Purchase Price : {} ".format(self.price))
+        print ("Purchase Taxes : {} ".format(self.taxes))
+
