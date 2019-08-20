@@ -21,11 +21,12 @@ class Property:
 
     prompt_init = staticmethod(prompt_init)
 
-class Apartment(Property):
-    valied_laundries = ("coin","ensuite","none")
-    valied_balaconies = ("yes","no","solarium")
 
-    def __init__(self,balcony='',laundry='',**kwargs):
+class Apartment(Property):
+    valied_laundries = ("coin", "ensuite", "none")
+    valied_balaconies = ("yes", "no", "solarium")
+
+    def __init__(self, balcony='', laundry='', **kwargs):
         super(Apartment, self).__init__(**kwargs)
         self.balcony = balcony
         self.laundry = laundry
@@ -36,29 +37,28 @@ class Apartment(Property):
         print ("laundary : %s" % self.laundry)
         print ("has balcony : %s" % self.balcony)
 
-
     def prompt_init():
         parent_init = Property.prompt_init()
         laundry = ''
         while laundry.lower() not in \
-            Apartment.valied_laundries:
+                Apartment.valied_laundries:
             laundry = input("What laundry facilites does "
                             "the proparty have ? ({})".format(
                 ", ".join(Apartment.valied_laundries)
             ))
-            balcony = ''
-            while balcony.lower() not in \
+        balcony = ''
+        while balcony.lower() not in \
                 Apartment.valied_balaconies:
-                balcony = input(
-                    "Does Property have a balcony ? "
-                    "({})".format(
-                        ", ".join(Apartment.valied_balaconies)
+            balcony = input(
+                "Does Property have a balcony ? "
+                "({})".format(
+                    ", ".join(Apartment.valied_balaconies)
 
-                    )
                 )
-                parent_init.update({
-                    "laundry":laundry,
-                    "balcony":balcony
-                })
-                return parent_init
-            prompt_init = staticmethod(prompt_init)
+            )
+            parent_init.update({
+                "laundry": laundry,
+                "balcony": balcony
+            })
+            return parent_init
+        prompt_init = staticmethod(prompt_init)
