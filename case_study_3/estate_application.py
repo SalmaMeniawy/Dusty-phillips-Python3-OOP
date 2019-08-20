@@ -14,11 +14,18 @@ class property:
         print ("bathrooms : {}").format(self.num_baths)
         print ()
 
-    def prompt_init(self):
-        return dict(
-            square_feet=input("Enter the square feet"),
-            beds=input("Enter Number of Bedrooms"),
-            baths=input("Enter Number of baths"),
-        )
+    def prompt_init():
+        return dict(square_feet=input("Enter the square feet: "),
+                    beds=input("Enter number of bedrooms: "),
+                    baths=input("Enter number of baths: "))
 
     prompt_init = staticmethod(prompt_init)
+
+    # def prompt_init():
+    #     return dict(
+    #         square_feet=input("Enter the square feet"),
+    #         beds=input("Enter Number of Bedrooms"),
+    #         baths=input("Enter Number of baths"),
+    #     )
+    #
+    # prompt_init = staticmethod(prompt_init)
