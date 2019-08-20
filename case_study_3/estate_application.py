@@ -1,3 +1,10 @@
+def get_valid_input(input_string, valied_options):
+    input_string += "({})".format(join(valied_options))
+    responce = input(input_string)
+    while responce.lower() not in valied_options:
+        responce = input(input_string)
+    return responce
+
 class Property:
     def __init__(self, baths='', beds='', square_feet='', **kwargs):
         super(property, self).__init__(**kwargs)
@@ -37,6 +44,8 @@ class Apartment(Property):
         print ("laundary : %s" % self.laundry)
         print ("has balcony : %s" % self.balcony)
 
+
+
     def prompt_init():
         parent_init = Property.prompt_init()
         laundry = ''
@@ -62,3 +71,4 @@ class Apartment(Property):
             })
             return parent_init
         prompt_init = staticmethod(prompt_init)
+
