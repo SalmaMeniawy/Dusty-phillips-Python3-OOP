@@ -7,7 +7,7 @@ def get_valid_input(input_string, valied_options):
 
 class Property:
     def __init__(self, baths='', beds='', square_feet='', **kwargs):
-        super(property, self).__init__(**kwargs)
+        super(Property, self).__init__(**kwargs)
         self.square_feet = square_feet
         self.num_bedrooms = beds
         self.num_baths = baths
@@ -16,17 +16,17 @@ class Property:
         'display method that display and print the propert attributes '
         print ("Property details ")
         print ("====================")
-        print ("Square Foots : {}").format(self.square_feet)
-        print ("bedrooms : {}").format(self.num_bedrooms)
-        print ("bathrooms : {}").format(self.num_baths)
+        print ("Square Foots : {} ".format(self.square_feet))
+        print ("bedrooms : {} ".format(self.num_bedrooms))
+        print ("bathrooms : {} ".format(self.num_baths))
         print ()
-
+    @staticmethod
     def prompt_init():
         return dict(square_feet=input("Enter the square feet: "),
                     beds=input("Enter number of bedrooms: "),
                     baths=input("Enter number of baths: "))
 
-    prompt_init = staticmethod(prompt_init)
+    # prompt_init = staticmethod(prompt_init)
 
 
 class Apartment(Property):
@@ -45,7 +45,7 @@ class Apartment(Property):
         print ("has balcony : %s" % self.balcony)
 
 
-
+    @staticmethod
     def prompt_init():
         parent_init = Property.prompt_init()
         laundry = get_valid_input(
@@ -80,7 +80,7 @@ class Apartment(Property):
         })
         return parent_init
 
-    prompt_init = staticmethod(prompt_init)
+    # prompt_init = staticmethod(prompt_init)
 
 class House(Property):
     valied_garage = ("attached","detached","none")
@@ -92,15 +92,20 @@ class House(Property):
         self.fenced = fenced
         self.num_stories = num_stories
 
+    # def display(self):def display(self):
+    # super().display()
+    # print("HOUSE DETAILS")
+    # print("# of stories: {}".format(self.num_stories))
+    # print("garage: {}".format(self.garage))
+    # print("fenced yard: {}".format(self.fenced))
+
     def display(self):
-        super(House, self).display()
-        print("House Details")
-        print ("================")
-        print ("# of stories {} ").format(self.num_stories)
-        print ("garage : {}").format(self.garage)
-        print("fenced yard : {}".format(self.fenced))
-
-
+        super(House,self).display()
+        print("HOUSE DETAILS")
+        print("# of stories: {} ".format(self.num_stories))
+        print("garage: {} ".format(self.garage))
+        print("fenced yard: {} ".format(self.fenced ))
+    @staticmethod
     def prompt_init():
         parent_init = Property.prompt_init()
         fenced = get_valid_input("is the yard fenced",
@@ -115,7 +120,7 @@ class House(Property):
             "num_stories":num_strories
         })
         return parent_init
-    prompt_init = staticmethod(prompt_init)
+    # prompt_init = staticmethod(prompt_init)
 
 class Purchase:
     def __init__(self,taxes='',price='',**kwargs):
@@ -127,13 +132,13 @@ class Purchase:
         super(Purchase, self).display()
         print ("Purchase Price : {} ".format(self.price))
         print ("Purchase Taxes : {} ".format(self.taxes))
-
+    @staticmethod
     def prompt_init():
         return dict(
             price= input("what is the selling price ?"),
             taxes = input("what are the estimated taxes ? ")
         )
-    prompt_init = staticmethod(prompt_init)
+    # prompt_init = staticmethod(prompt_init)
 
 class Rental:
     def __init__(self,rent='',furnished='',utilities='',**kwargs):
@@ -145,10 +150,11 @@ class Rental:
     def display(self):
         super(Rental, self).display()
         print ("Rental Details")
-        print ("rent : {}".format(self.rent))
-        print("estimated utilities : {}".format(self.utilities))
-        print ("furnished: {}".format(self.furnished))
-
+        print ("rent %" % self.rent)
+        print ("rent : {} ".format(self.rent))
+        print("estimated utilities : {} ".format(self.utilities))
+        print ("furnished: {} ".format(self.furnished))
+    @staticmethod
     def prompt_init():
         return dict(
             rent = input("What is the monthly rent ? "),
@@ -158,6 +164,15 @@ class Rental:
                 ("yes","no")
             )
         )
-    prompt_init = staticmethod(prompt_init)
+    # prompt_init = staticmethod(prompt_init)
 
 
+class HouseRental(House,Rental):
+    @staticmethod
+    def prompt_init():
+        init = House.prompt_init()
+        init.update(Rental.prompt_init())
+        return init
+    # prompt_init = staticmethod(prompt_init)
+
+    
