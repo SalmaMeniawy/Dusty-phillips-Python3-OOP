@@ -57,6 +57,30 @@ class Apartment(Property):
         return parent_init
     # prompt_init = staticmethod(prompt_init)
 
+class Rental:
+    def __init__(self, furnished='', utilities='',
+    rent='', **kwargs):
+        super(Rental,self).__init__(**kwargs)
+        self.furnished = furnished
+        self.rent = rent
+        self.utilities = utilities
+    def display(self):
+        super(Rental,self).display()
+        print("RENTAL DETAILS")
+        print("rent: {}".format(self.rent))
+        print("estimated utilities: {}".format(
+            self.utilities))
+        print("furnished: {}".format(self.furnished))
+    @staticmethod
+    def prompt_init():
+        return dict(
+            rent=input("What is the monthly rent? "),
+            utilities=input(
+                "What are the estimated utilities? "),
+            furnished = get_valid_input(
+                "Is the property furnished? ",
+                ("yes", "no")))
+# prompt_init = staticmethod(prompt_init)
 
 class House(Property):
     valid_garage = ("attached", "detached", "none")
@@ -105,3 +129,31 @@ class Purchase:
             price=input("What is the selling price? "),
             taxes=input("What are the estimated taxes? "))
 
+class ApartmentRental(Rental, Apartment):
+    @staticmethod
+    def prompt_init():
+        init = Apartment.prompt_init()
+        init.update(Rental.prompt_init())
+        return init
+    # prompt_init = staticmethod(prompt_init)
+class ApartmentPurchase(Purchase, Apartment):
+    @staticmethod
+    def prompt_init():
+        init = Apartment.prompt_init()
+        init.update(Purchase.prompt_init())
+        return init
+    # prompt_init = staticmethod(prompt_init)
+class HousePurchase(Purchase, House):
+    @staticmethod
+    def prompt_init():
+        init = House.prompt_init()
+        init.update(Purchase.prompt_init())
+        return init
+    # prompt_init = staticmethod(prompt_init)
+class HouseRental(Rental, House):
+    @staticmethod
+    def prompt_init():
+        init = House.prompt_init()
+        init.update(Rental.prompt_init())
+        return init
+# prompt_init = staticmethod(prompt_init)
