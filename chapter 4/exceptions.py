@@ -37,10 +37,23 @@ def funny_devision2(anumber):
         return 100 / anumber
     except (TypeError , ZeroDivisionError):
         return "Enter number rather than Zero"
-for val in (0,"hello",50.0,13):
-    print ("Testing {}".format(val) ,end=" ")
-    print(funny_devision2(val))
+# for val in (0,"hello",50.0,13):
+    # print ("Testing {}".format(val) ,end=" ")
+    # print(funny_devision2(val))
+def funny_division3(anumber):
+    try:
+        if anumber == 13:
+            raise ValueError(" 13 is un lickely Number  ")
+        return 100 / anumber
+    except ZeroDivisionError :
+        return "Enter a number rather than zero"
+    except TypeError :
+        return "Enter a numerical value"
+    except ValueError:
+        print ("no no not 13")
+        raise
 
+# funny_division3(13)
 class EvenOnly(list):
     def append(self,integer):
         if not isinstance(integer,int):
