@@ -52,6 +52,12 @@ def funny_division3(anumber):
     except ValueError:
         print ("no no not 13")
         raise
+try:
+    raise ValueError("This is an argument")
+except ValueError as e:
+    print("Execption Arguments are ", e.args)
+    # print("The exception arguments were".format(e.args) )
+
 
 # funny_division3(13)
 class EvenOnly(list):
