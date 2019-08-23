@@ -15,7 +15,11 @@ def raise_exceptor():
     print("an exception was raised...")
     print("...so these lines don't run")
 
-
+try:
+    no_return()
+except:
+    print("I cought an exception")
+print ("Excecution after the exception")
 class EvenOnly(list):
     def append(self,integer):
         if not isinstance(integer,int):
