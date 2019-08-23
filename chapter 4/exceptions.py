@@ -52,11 +52,35 @@ def funny_division3(anumber):
     except ValueError:
         print ("no no not 13")
         raise
-try:
-    raise ValueError("This is an argument")
-except ValueError as e:
-    print("Execption Arguments are ", e.args)
+    """
+        write native code to get the arguments that the class of exception take to its contractor we get it 
+    """
+# try:
+#     raise ValueError("This is an argument")
+# except ValueError as e:
+#     print("Execption Arguments are ", e.args)
     # print("The exception arguments were".format(e.args) )
+"""
+    we write this code to descover two keywords 'finaly'and 'else' to make code execute if the exception occure or not
+"""
+import random
+some_exceptions = [ValueError , TypeError ,IndexError ,None]
+try:
+    choice = random.choice(some_exceptions)
+    print ("raising choice {}".format(choice))
+    if choice :
+        raise choice("An Error")
+except ValueError :
+    print ("Change a value error")
+except TypeError :
+    print ("caught a type error")
+except Exception as e :
+    print ("cought some other errors : %s" %(e.__class__.__name__))
+else :
+    print ("this code will appear when there is no exceptions")
+
+finally:
+    print ("this cleanup code is always called")
 
 
 # funny_division3(13)
