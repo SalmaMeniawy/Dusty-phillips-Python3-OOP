@@ -8,6 +8,14 @@ def no_return():
     raise Exception("this is always raised")
     print ("this line will not execute")
     return  "I won't be returned"
+
+def raise_exceptor():
+    print ("call_exceptor call here")
+    no_return()
+    print("an exception was raised...")
+    print("...so these lines don't run")
+
+
 class EvenOnly(list):
     def append(self,integer):
         if not isinstance(integer,int):
