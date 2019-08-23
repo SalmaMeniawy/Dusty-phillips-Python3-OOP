@@ -15,11 +15,32 @@ def raise_exceptor():
     print("an exception was raised...")
     print("...so these lines don't run")
 
-try:
-    no_return()
-except:
-    print("I cought an exception")
+# try:
+#     no_return()
+# except:
+#     print("I cought an exception")
 print ("Excecution after the exception")
+
+def funny_division(divider):
+    try:
+        return 100/divider
+    except ZeroDivisionError:
+        # return "Zero is not a good idea"
+        return raise_exceptor()
+
+# print (funny_division(0))
+# print (funny_division("sss"))
+def funny_devision2(anumber):
+    try:
+        if anumber == 13:
+            raise ValueErrpr("13 is not a lucky number")
+        return 100 / anumber
+    except (TypeError , ZeroDivisionError):
+        return "Enter number rather than Zero"
+for val in (0,"hello",50.0,13):
+    print ("Testing {}".format(val) ,end=" ")
+    print(funny_devision2(val))
+
 class EvenOnly(list):
     def append(self,integer):
         if not isinstance(integer,int):
