@@ -187,3 +187,10 @@ class ApartmentPurchase(Purchase , Apartment):
         init = Apartment.prompt_init()
         init.update(Rental.prompt_init())
         return  init
+
+class HousePurchase(Purchase,House):
+    @staticmethod
+    def prompt_init():
+        init = House.prompt_init()
+        init.update(Purchase.prompt_init())
+        return  init
