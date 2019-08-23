@@ -197,8 +197,29 @@ class HousePurchase(Purchase,House):
 
 
 class Agent :
+    type_map= {
+        ("house","rental"):HouseRental,
+        ("house","purchase"):HousePurchase,
+        ("apartment","rental"):ApartmentRental,
+        ("apartment","purchase"):ApartmentPurchase
+    }
     def __init__(self):
         self.property_list = []
+
+    def add_property(self):
+        property_type = get_valid_input(
+            "what type of property ?" ,
+            ("house","apartment")
+        ).lower()
+        payment_type = get_valid_input(
+            "what type of payment ?",
+            ("rental","purchase")
+        ).lower()
+        PropertyClass = self.type_map[
+            (property_type ,payment_type)
+        ]
+        init_args =PropertyClass.prompt_init()
+        self.property_list.append(PropertyClass(**init_args))
 
     def display_proparties(self):
         for proparty in self.property_list:
