@@ -194,3 +194,12 @@ class HousePurchase(Purchase,House):
         init = House.prompt_init()
         init.update(Purchase.prompt_init())
         return  init
+
+
+class Agent :
+    def __init__(self):
+        self.property_list = []
+
+    def display_proparties(self):
+        for proparty in self.property_list:
+            proparty.display()
