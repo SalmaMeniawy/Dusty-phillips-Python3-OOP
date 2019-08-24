@@ -126,4 +126,10 @@ def divided_with_exception(number , divisor):
         ))
     except ZeroDivisionError:
         print ("you can't divide by zero ")
-
+def divided_with_if(number , divisor):
+    if divisor == 0 :
+        print ("you can n't divide by zero")
+    else:
+        print ("{} / {} = {} ".format(
+            number , divisor,number / divisor * 1.0
+        ))
