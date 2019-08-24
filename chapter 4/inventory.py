@@ -22,3 +22,19 @@ class Inventory:
         the number of items left.'''
         pass
 
+item_type = 'widget'
+inv = Inventory()
+inv.luck(item_type)
+try :
+    num_left = inv.purchase(item_type)
+except InvaliedItemType :
+    print ("sorry we don't sell {}".front(item_type))
+except OutOfStock:
+    print ("sorry this item not in the stock ")
+else:
+    print("Purchase complete. There are "
+          "{} {}s left".format(num_left, item_type))
+finally:
+    inv.unluck(item_type)
+
+
