@@ -48,7 +48,7 @@ class Authenticator:
             raise InvalidPassword(password,username)
         user.is_logged_in = True
         return True
-    
+
     def is_logged_in(self,username):
         if username in self.users:
             return self.users[username].is_logged_in
@@ -61,4 +61,10 @@ class InvalidUsername(AuthException):
 class InvalidPassword(AuthException):
     pass
 
+authenticator = Authenticator()
 
+class Authorizer:
+    def __init__(self,authenticator):
+        self.authenticator = authenticator
+        self.permissions = {}
+        
