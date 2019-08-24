@@ -76,4 +76,15 @@ class Authorizer:
             self.permissions[perm_name] = set()
         else:
             raise PermissionError("Permission Exists")
-        
+
+    def permit_user(self,perm_name ,username):
+        '''Grant the given permission to the user'''
+        try:
+            perm_set = self.permissions[perm_name]
+        except KeyError:
+            raise PermissionError("permission does not exist ")
+        else:
+            if username not in self.authenticator.users:
+                raise InvalidUsername (username)
+            perm_set.add(username)
+
