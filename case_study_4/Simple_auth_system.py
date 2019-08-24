@@ -23,3 +23,6 @@ class AuthException(Exception):
         self.user = user
 class UsernameAlreadyExists(AuthException):
     pass
+
+class PasswordTooShort(AuthException):
+    pass
