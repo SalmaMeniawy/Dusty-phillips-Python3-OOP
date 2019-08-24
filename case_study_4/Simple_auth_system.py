@@ -3,7 +3,7 @@ class User :
     def __init__(self,username ,password):
         self.username = username
         self.password = self.encrypt_pw(password)
-        self.is_log_in = False
+        self.is_logged_in = False
 
     def encrypt_pw(self,password):
         hash_string = (self.username + password)
@@ -38,6 +38,17 @@ class Authenticator:
         if len(password) < 6 :
             raise PasswordTooShort(username)
         self.users[username] = User(username , password)
+
+    def login(self,username , password):
+        try:
+            user = self.users[username]
+        except KeyError :
+            raise InvalidUsername(username)
+        if not user.check_password(password):
+            raise InvalidPassword(password,username)
+        user.is_logged_in = True
+        return True
+
 
 class InvalidUsername(AuthException):
     pass
