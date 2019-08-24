@@ -109,10 +109,21 @@ class InvalidWithdrawal(Exception):
 """
     try to handel exception of Invalidwithdrawl class
 """
-try:
-    raise InvalidWithdrawal(25,50)
-except InvalidWithdrawal as e :
-    print ("I am sorry , but your withdrawl is" 
-           "more than your baance by"
-           "${}".format(e.overage()))
+# try:
+#     raise InvalidWithdrawal(25,50)
+# except InvalidWithdrawal as e :
+#     print ("I am sorry , but your withdrawl is"
+#            "more than your baance by"
+#            "${}".format(e.overage()))
+#
+"""
+    create function create with exception
+"""
+def divided_with_exception(number , divisor):
+    try:
+        print ("{} / {} = {} ".format(
+            number , divisor , number / divisor * 1.0
+        ))
+    except ZeroDivisionError:
+        print ("you can't divide by zero ")
 
