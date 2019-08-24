@@ -96,6 +96,13 @@ class EvenOnly(list):
     Here's a simple exception we might use in a banking application:
 """
 class InvalidWithdrawal(Exception):
-    pass
+    def __init__(self,balance,amount):
+        super(InvalidWithdrawal, self).__init__("account doesnot have ${}".format(amount))
+        self.balance = balance
+        self.amount = amount
 
-raise InvalidWithdrawal("you don't have 50 $ in your account")
+    def overage(self):
+        return self.amount - self.balance
+
+raise InvalidWithdrawal(25 , 50)
+# raise InvalidWithdrawal("you don't have 50 $ in your account")
