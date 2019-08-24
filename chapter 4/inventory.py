@@ -12,3 +12,13 @@ class Inventory:
         '''Release the given type so that other
         customers can access it.'''
         pass
+
+    def purchase(self,item_type):
+        '''If the item is not locked, raise an
+        exception. If the item_type does not exist,
+        raise an exception. If the item is currently
+        out of stock, raise an exception. If the item
+        is available, subtract one item and return
+        the number of items left.'''
+        pass
+
