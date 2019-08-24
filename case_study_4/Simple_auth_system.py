@@ -67,4 +67,13 @@ class Authorizer:
     def __init__(self,authenticator):
         self.authenticator = authenticator
         self.permissions = {}
+
+
+    def add_permission(self,perm_name):
+        try:
+            perm_set = self.permissions[perm_name]
+        except KeyError :
+            self.permissions[perm_name] = set()
+        else:
+            raise PermissionError("Permission Exists")
         
