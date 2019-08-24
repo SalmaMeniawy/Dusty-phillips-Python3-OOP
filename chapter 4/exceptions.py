@@ -92,3 +92,10 @@ class EvenOnly(list):
             raise ValueError("Only Even numbers can be added ")
         super(EvenOnly, self).append(integer)
 
+"""
+    Here's a simple exception we might use in a banking application:
+"""
+class InvalidWithdrawal(Exception):
+    pass
+
+raise InvalidWithdrawal("you don't have 50 $ in your account")
