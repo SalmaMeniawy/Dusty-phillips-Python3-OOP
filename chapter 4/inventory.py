@@ -8,4 +8,7 @@ class Inventory:
         customers.'''
         pass
 
-    
+    def unluck(self,item_type):
+        '''Release the given type so that other
+        customers can access it.'''
+        pass
