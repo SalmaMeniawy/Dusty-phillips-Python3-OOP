@@ -21,4 +21,5 @@ class AuthException(Exception):
         super(AuthException, self).__init__(username ,user)
         self.username = username
         self.user = user
-        
+class UsernameAlreadyExists(AuthException):
+    pass
