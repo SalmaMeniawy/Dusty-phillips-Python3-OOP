@@ -15,3 +15,10 @@ class User :
         user, false otherwise.'''
         encrypted = self.encrypt_pw(password)
         return encrypted == self.password
+
+class AuthException(Exception):
+    def __init__(self,username,user=None):
+        super(AuthException, self).__init__(username ,user)
+        self.username = username
+        self.user = user
+        
