@@ -38,3 +38,7 @@ class Authenticator:
         if len(password) < 6 :
             raise PasswordTooShort(username)
         self.users[username] = User(username , password)
+
+class InvalidUsername(AuthException):
+    pass
+
