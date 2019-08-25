@@ -8,7 +8,7 @@ class User :
     def encrypt_pw(self,password):
         hash_string = (self.username + password)
         hash_string = hash_string.encode("utf8")
-        return hashlib.sha256(hash_string).hexdiget()
+        return hashlib.sha256(hash_string).hexdigest()
 
     def check_password(self,password):
         '''Return True if the password is valid for this
@@ -37,6 +37,7 @@ class Authenticator:
             raise UsernameAlreadyExists(username)
         if len(password) < 6 :
             raise PasswordTooShort(username)
+
         self.users[username] = User(username , password)
 
     def login(self,username , password):
@@ -95,19 +96,42 @@ class Authorizor:
             perm_set.add(username)
 
     def check_permission(self,perm_name , username):
-        if not self.authenticator.is_logged_in[username]:
+        if not self.authenticator.is_logged_in(username):
             raise NotLoggedInError(username)
         try:
             perm_set = self.permissions[perm_name]
-        except KeyError :
-            raise PermissionError("Permission does not exist ")
+        except KeyError:
+            raise PermissionError("Permission does not exist")
         else:
             if username not in perm_set:
-                raise NotPermittedError (username)
+                raise NotPermittedError(username)
+
             else:
                 return True
+
+        #
+        # if not self.authenticator.is_logged_in[username]:
+        #     raise NotLoggedInError(username)
+        # try:
+        #     perm_set = self.permissions[perm_name]
+        #     # perm_set = self.permissions[perm_name]
+        # except KeyError :
+        #     raise PermissionError("Permission does not exist ")
+        # else:
+        #     if username not in perm_set:
+        #         raise NotPermittedError (username)
+        #     else:
+        #         return True
 
 
 
 authenticator = Authenticator()
 authorizor = Authorizor(authenticator)
+
+# import auth
+# # Set up a test user and permission
+# auth.authenticator.add_user("mona", "joepassword")
+# auth.authorizor.add_permission("test program")
+# auth.authorizor.add_permission("change program")
+# auth.authorizor.permit_user("test program", "mona")
+
