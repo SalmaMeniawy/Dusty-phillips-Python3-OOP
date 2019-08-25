@@ -25,3 +25,16 @@ class Editor:
 
             else:
                 self.username = username
+
+    def is_permitted(self,permission):
+        try:
+            auth.authorizor.check_permission(permission ,self.username)
+        except auth.NotLoggedInError as e :
+            print ("{} is not logged in ".format(self.username) )
+            return False
+        except auth.NotPermittedError as e :
+            print ("{} can not {} ".format(self.username , permission))
+            return  False
+        else:
+            return True
+        
