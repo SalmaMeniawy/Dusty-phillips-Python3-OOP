@@ -70,7 +70,7 @@ class NotPermittedError(AuthException):
 
 authenticator = Authenticator()
 authorizor = Authorizor(authenticator)
-class Authorizer:
+class Authorizor:
     def __init__(self,authenticator):
         self.authenticator = authenticator
         self.permissions = {}
