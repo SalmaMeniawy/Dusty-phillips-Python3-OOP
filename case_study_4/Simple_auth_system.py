@@ -60,6 +60,9 @@ class InvalidUsername(AuthException):
 
 class InvalidPassword(AuthException):
     pass
+class PermissionError(AuthException):
+    pass
+
 
 authenticator = Authenticator()
 
@@ -87,4 +90,19 @@ class Authorizer:
             if username not in self.authenticator.users:
                 raise InvalidUsername (username)
             perm_set.add(username)
+
+    def check_permission(self,perm_name , username):
+        if not self.authenticator.is_logged_in[username]:
+            raise NotLoggedInError(username)
+        try:
+            perm_set = self.permissions[perm_name]
+        except KeyError :
+            raise PermissionError("Permission does not exist ")
+        else:
+            if username not in perm_set:
+                raise NotPermittedError (username)
+            else:
+                return True
+
+
 
