@@ -68,8 +68,7 @@ class NotLoggedInError(AuthException):
 class NotPermittedError(AuthException):
     pass
 
-authenticator = Authenticator()
-authorizor = Authorizor(authenticator)
+
 class Authorizor:
     def __init__(self,authenticator):
         self.authenticator = authenticator
@@ -110,3 +109,5 @@ class Authorizor:
 
 
 
+authenticator = Authenticator()
+authorizor = Authorizor(authenticator)
