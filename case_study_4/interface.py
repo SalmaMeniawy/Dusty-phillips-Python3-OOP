@@ -18,9 +18,9 @@ class Editor:
             password = input("password : ")
             try :
                 auth.authenticator.login(username ,password)
-            except auth.InvalidUsername(username):
+            except auth.InvalidUsername:
                 print ("Sorry user name does not exist ")
-            except auth.InvalidPassword(username ,password ):
+            except auth.InvalidPassword:
                 print ("sorry password is wrong")
 
             else:
@@ -37,4 +37,35 @@ class Editor:
             return  False
         else:
             return True
-        
+
+    def test(self):
+        if self.is_permitted("test program"):
+            print ("testing program now")
+    def change(self):
+        if self.is_permitted("change program"):
+            print ("Changing program now")
+
+    def quite(self):
+        raise SystemExit()
+
+    def menu(self):
+        answer = " "
+        while True:
+            print("""
+            Please enter a command:
+            \tlogin\tLogin
+            \ttest\tTest the program
+            \tchange\tChange the program
+            \tquit\tquite
+            """)
+            answer = input("Enter command ").lower()
+            try:
+                func = self.menu_map[answer]
+            except KeyError :
+                print ("{} is not valied option ".format(answer))
+            else:
+                func()
+            finally:
+                print("thank you for testing the auth module")
+
+Editor().menu()
