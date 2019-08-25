@@ -63,6 +63,8 @@ class InvalidPassword(AuthException):
 class PermissionError(AuthException):
     pass
 
+class NotLoggedInError(AuthException):
+    pass
 
 authenticator = Authenticator()
 
