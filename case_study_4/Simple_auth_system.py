@@ -65,7 +65,8 @@ class PermissionError(AuthException):
 
 class NotLoggedInError(AuthException):
     pass
-
+class NotPermittedError(AuthException):
+    pass
 authenticator = Authenticator()
 
 class Authorizer:
